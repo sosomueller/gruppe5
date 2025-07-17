@@ -35,7 +35,7 @@ labels = {node: f"{node}\n{data['Abteilung']} | {data['Erfahrungsstufe']}" for n
 # Graph zeichnen
 plt.figure(figsize=(14, 10))
 pos = nx.spring_layout(G, seed=42)
-nx.draw_networkx_nodes(G, pos, node_color='lightgreen', node_size=800, edgecolors='black')
+nx.draw_networkx_nodes(G, pos, node_color='lightgreen', node_size=800, edgecolors='lightgreen')
 nx.draw_networkx_edges(G, pos, width=1.5, alpha=0.7)
 nx.draw_networkx_labels(G, pos, labels, font_size=5)
 
