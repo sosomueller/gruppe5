@@ -1,6 +1,7 @@
 import pandas as pd
 import networkx as nx
 import matplotlib.pyplot as plt
+import streamlit as st
 
 # Excel-Datei einlesen
 df = pd.read_excel("basisdatenb.xlsx")
@@ -40,4 +41,5 @@ nx.draw_networkx_labels(G, pos, labels, font_size=8)
 
 plt.title("Teilnehmernetzwerk basierend auf Excel-Daten", fontsize=14)
 plt.axis('off')
-plt.show()
+st.pyplot(plt.gcf())
+plt.clf()  # optional, um die Figure zu leeren
