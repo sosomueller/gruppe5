@@ -2,6 +2,7 @@ import pandas as pd
 import networkx as nx
 import matplotlib.pyplot as plt
 import streamlit as st
+from pyvis.network import Network
 
 # Excel-Datei einlesen
 df = pd.read_excel("basisdatenb.xlsx")
@@ -40,6 +41,41 @@ nx.draw_networkx_edges(G, pos, width=1.5, alpha=0.7)
 nx.draw_networkx_labels(G, pos, labels, font_size=5)
 
 plt.title("Teilnehmernetzwerk basierend auf Excel-Daten", fontsize=14)
+# Pyvis Netzwerk erstellen
+net = Network(notebook=False, width="1000px", height="700px", bgcolor="#ffffff", font_color="black")
+
+# Knoten hinzufügen mit Hover-Infos
+for _, row in df.iterrows():
+    name = row['Name']
+    abt = row['Abteilung']
+    email = row['Email']
+    inter = row['Interessen']
+    stufe = row['Erfahrungsstufe']
+    tooltip = f"""
+    <b>Name:</b> {name}<br>
+    <b>Abteilung:</b> {abt}<br>
+    <b>Email:</b> {email}<br>
+    <b>Interessen:</b> {inter}<br>
+    <b>Erfahrungsstufe:</b> {stufe}
+    """
+    net.add_node(name, label=name, title=tooltip)
+
+# Kanten hinzufügen
+for _, row in df.iterrows():
+    name = row['Name']
+    kontakte = row.get('Kontakte', '')
+    if pd.isnull(kontakte):
+        continue
+    kontakte = [k.strip() for k in str(kontakte).split(',') if k.strip()]
+    for kontakt in kontakte:
+        if kontakt in df['Name'].values and kontakt != name:
+            net.add_edge(name, kontakt)
+
+# Netzwerk als HTML speichern und in Streamlit anzeigen
+net.save_graph("netzwerk.html")
+with open("netzwerk.html", "r", encoding="utf-8") as f:
+    html = f.read()
+st.components.v1.html(html, height=750, scrolling=True)
 plt.axis('off')
 st.pyplot(plt.gcf())
 plt.clf()  # optional, um die Figure zu leeren
