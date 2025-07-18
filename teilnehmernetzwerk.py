@@ -75,7 +75,7 @@ for _, row in df.iterrows():
 net.write_html("netzwerk.html")
 with open("netzwerk.html", "r", encoding="utf-8") as f:
     html = f.read()
-st.components.v1.html(html, height=2000, width=2000, scrolling=True)
+st.components.v1.html(html, height=2000, width=2000, scrolling=False)
 plt.axis('off')
 st.pyplot(plt.gcf())
 plt.clf()  # optional, um die Figure zu leeren
