@@ -42,7 +42,7 @@ labels = {node: f"{node}\n{data['Abteilung']} | {data['Erfahrungsstufe']}" for n
 
 # plt.title("Teilnehmernetzwerk basierend auf Excel-Daten", fontsize=14)
 # Pyvis Netzwerk erstellen
-net = Network(notebook=False, width="1000px", height="1800px", bgcolor="#ffffff", font_color="black")
+net = Network(notebook=False, width="1800px", height="1000px", bgcolor="#ffffff", font_color="black")
 
 # Knoten hinzufügen mit Hover-Infos
 for _, row in df.iterrows():
