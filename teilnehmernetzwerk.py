@@ -76,7 +76,7 @@ st.set_page_config(layout="wide")
 net.write_html("netzwerk.html")
 with open("netzwerk.html", "r", encoding="utf-8") as f:
     html = f.read()
-st.components.v1.html(html, height=2000, width=2000, scrolling=False)
+st.components.v1.html(html, height=1000, width=1800, scrolling=False)
 plt.axis('off')
 st.pyplot(plt.gcf())
 plt.clf()  # optional, um die Figure zu leeren
