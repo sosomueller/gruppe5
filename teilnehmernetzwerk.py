@@ -72,6 +72,7 @@ for _, row in df.iterrows():
             net.add_edge(name, kontakt)
 
 # Netzwerk als HTML speichern und in Streamlit anzeigen
+st.set_page_config(layout="wide")
 net.write_html("netzwerk.html")
 with open("netzwerk.html", "r", encoding="utf-8") as f:
     html = f.read()
