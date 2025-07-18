@@ -42,7 +42,7 @@ nx.draw_networkx_labels(G, pos, labels, font_size=5)
 
 plt.title("Teilnehmernetzwerk basierend auf Excel-Daten", fontsize=14)
 # Pyvis Netzwerk erstellen
-net = Network(notebook=False, width="2000px", height="2000px", bgcolor="#ffffff", font_color="black")
+net = Network(notebook=False, width="1000px", height="1000px", bgcolor="#ffffff", font_color="black")
 
 # Knoten hinzufügen mit Hover-Infos
 for _, row in df.iterrows():
