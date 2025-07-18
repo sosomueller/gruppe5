@@ -52,11 +52,11 @@ for _, row in df.iterrows():
     inter = row['Interessen']
     stufe = row['Erfahrungsstufe']
     tooltip = f"""
-    <b>Name:</b> {name}<br>
-    <b>Abteilung:</b> {abt}<br>
-    <b>Email:</b> {email}<br>
-    <b>Interessen:</b> {inter}<br>
-    <b>Erfahrungsstufe:</b> {stufe}
+    Name: {name}
+    Abteilung: {abt}
+    Email: {email}
+    Interessen: {inter}
+    Erfahrungsstufe: {stufe}
     """
     net.add_node(name, label=name, title=tooltip)
 
